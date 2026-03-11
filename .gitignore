@@ -1,0 +1,58 @@
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# ─── Virtual environments ─────────────────────────────────────────────────────
+venv/
+venv_tt/
+.venv/
+env/
+ENV/
+
+# ─── YOLO / Model weights ─────────────────────────────────────────────────────
+*.pt
+*.pth
+*.onnx
+*.torchscript
+runs/
+
+# ─── Video files ──────────────────────────────────────────────────────────────
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+
+# ─── Training data & frames ───────────────────────────────────────────────────
+training/
+auto_labeling/frames/
+auto_labeling/raw_videos/
+auto_labeling/visualized/
+auto_labeling/auto_labels/
+tracker_stubs/
+
+# ─── Output ───────────────────────────────────────────────────────────────────
+output_videos/*.avi
+output_videos/*.mp4
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ─── OS / Editor ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ─── Misc ─────────────────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak

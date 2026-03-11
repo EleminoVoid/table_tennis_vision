@@ -1,0 +1,23 @@
+# Table Tennis Ball Tracking - Python 3.12 required (3.14 has no CUDA torch wheels)
+#
+# Install with:
+#   py -3.12 -m venv venv_tt
+#   .\venv_tt\Scripts\Activate.ps1
+#   pip install -r requirements.txt
+#
+# For GPU (NVIDIA):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# For CPU only:
+#   pip install torch torchvision
+#
+# Workflow:
+#   1. Download dataset & train:  python download_and_train.py
+#   2. Track balls in video:      python ball_tracking.py --input input_videos/input_video.mp4
+
+# ultralytics >= 8.3.86 required for YOLOv12 (yolo12n.pt)
+ultralytics>=8.3.86
+roboflow
+opencv-python
+pandas
+numpy
+matplotlib

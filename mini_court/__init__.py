@@ -1,0 +1,1 @@
+from .mini_table_tennis import MiniTableTennis, MiniCourt
