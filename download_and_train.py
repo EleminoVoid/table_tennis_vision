@@ -1,7 +1,7 @@
 """
 Download Table Tennis Ball Dataset from Roboflow and Train YOLO Model
 
-Dataset: https://universe.roboflow.com/kevins-workspace-8zhhu/balls-per-frame/dataset/6
+Dataset: https://universe.roboflow.com/kevins-workspace-8zhhu/balls-per-frame/dataset/7
 Images:  14384 (12581 train / 1211 val / 592 test)
 Augmentation: 3x per image, ±15° rotation, ±20° hue (applied by Roboflow)
 
@@ -22,7 +22,7 @@ import shutil
 # ── Roboflow project identifiers ─────────────────────────────────────────────
 RF_WORKSPACE = "kevins-workspace-8zhhu"
 RF_PROJECT   = "balls-per-frame"
-RF_VERSION   = 6
+RF_VERSION   = 7
 RF_FORMAT    = "yolov12"         # YOLOv12 format – same YAML structure as v8/v11
 
 # Default API key for this project (override via --api-key)
