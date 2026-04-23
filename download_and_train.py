@@ -148,6 +148,8 @@ def _ensure_val_split(yaml_path: str, val_fraction: float = 0.15) -> None:
 
 def train_model(yaml_path: str):
     """Train YOLOv12 on the downloaded dataset."""
+    os.environ.setdefault("TQDM_ASCII", "1")
+
     try:
         from ultralytics import YOLO
     except ImportError:
@@ -161,8 +163,9 @@ def train_model(yaml_path: str):
     print(f"  data.yaml : {yaml_path}")
     print(f"  Epochs    : 100")
     print(f"  Image size: 640")
-    print(f"  Batch     : 32")
-    print(f"  Cache     : disk (preprocessed cache for faster epochs)")
+    print(f"  Batch     : 10 (safe-fast mode)")
+    print(f"  Cache     : off (safe mode)")
+    print(f"  Workers   : 3 (safe-fast mode)")
     print(f"  Motion blur augmentation: ON")
     print("=" * 55 + "\n")
 
@@ -171,9 +174,10 @@ def train_model(yaml_path: str):
 
     results = model.train(
         data        = yaml_path,
+        device      = 0,
         epochs      = 100,
         imgsz       = 640,
-        batch       = 32,        # RTX 3080 10 GB handles 32 easily for nano
+        batch       = 10,
         conf        = 0.05,      # low threshold – table tennis ball is small
         iou         = 0.4,
         augment     = True,
@@ -186,7 +190,7 @@ def train_model(yaml_path: str):
         # Epoch 1 is slower (writing cache), every subsequent epoch
         # reads from the .cache file → faster than re-reading raw images.
         # Use "ram" only if you have >20 GB free system RAM.
-        cache       = "disk",
+        cache       = False,
         # ── Motion blur augmentation ─────────────────────────────
         # RandAugment applies blur, sharpness, contrast shifts randomly
         # which teaches the model to handle the motion-blurred ball.
@@ -194,8 +198,11 @@ def train_model(yaml_path: str):
         # ─────────────────────────────────────────────────────────
         patience    = 15,        # early stopping
         save        = True,
+        save_period = 1,
         project     = MODEL_DIR,
         name        = "ball_detection_yolo12",
+        workers     = 3,
+        verbose     = False,
         exist_ok    = True,
     )
 

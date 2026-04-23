@@ -21,3 +21,5 @@ opencv-python
 pandas
 numpy
 matplotlib
+anthropic
+python-docx
